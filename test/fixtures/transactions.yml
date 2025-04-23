@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  name: MyString
+  symbol: MyString
+  shares: 1
+  stock_price: 1
+  total: 1
+  portfolio: one
+
+two:
+  type: 
+  name: MyString
+  symbol: MyString
+  shares: 1
+  stock_price: 1
+  total: 1
+  portfolio: two
