@@ -13,4 +13,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "portfolios#index"
+
+  resources :portfolios do
+    resources :transactions
+  end
 end
