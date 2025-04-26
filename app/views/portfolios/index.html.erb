@@ -1,4 +1,6 @@
-<h3>STOCK TRADING PAGE</h3>
-<p>Symbol: <%= @symbol  %></p>
-<br>
-<p>Stock Price: <%= @stock_price  %></p>
+<% if user_signed_in? %>
+<h2> Hi <%= current_user.email %> </h2>
+<%= link_to "Get started", trader_portfolios_path %>
+<% else %>
+<h1>Welcome. Please sign in</h1> 
+<% end  %>

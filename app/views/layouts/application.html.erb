@@ -23,7 +23,9 @@
   </head>
 
   <body>
-      <% flash.each do |type, msg| %>
+    <%= render "trader/portfolios/header" %>
+    <br><br>
+    <% flash.each do |type, msg| %>
       <div class="alert alert-info text-center font-weight-bolder">
         <%= msg %>
       </div>
