@@ -1,18 +1,13 @@
 <% if current_user %>
   <h2>Hiiii <%= current_user.email %></h2>
+<% end %>
   <% @traders.each do |trader| %>
-  <% if trader.is_pending %>
+  <% if trader == current_user %>
     <h2>Account Status</h2> 
     <p><%= trader.is_pending ? "Approved" : "Pending" %></p>
     <h2>Current Balance:</h2> 
     <p><%= trader.balance %></p>
     <%= link_to "Buy Stocks", new_trader_portfolio_path %>
   <% end %>
-<% end %>
 
-<h3>STOCK TRADING PAGE</h3>
-<p>Symbol: <%= @symbol  %></p>
-<br>
-<p>Stock Price: <%= @stock_price  %></p>
 <% end %>
-
