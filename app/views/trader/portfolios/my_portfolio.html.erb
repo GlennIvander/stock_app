@@ -1,0 +1,31 @@
+<h2>My Portfolio</h2>
+
+<table border="1" cellpadding="8">
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Stock Price</th>
+      <th>Total Shares</th>
+      <th>Total Cost</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @portfolios.each do |portfolio| %>
+      <tr>
+        <td><%= portfolio.symbol %></td>
+        <td><%= number_to_currency(portfolio.stock_price, unit: "₱") %></td>
+        <td><%= portfolio.total_shares %></td>
+        <td><%= number_to_currency(portfolio.total_cost, unit: "₱") %></td>
+        <td>
+  <%= form_with url: sell_trader_portfolio_path(portfolio), method: :patch, local: true do %>
+    <%= number_field_tag :shares_to_sell, 1, min: 1, max: portfolio.total_shares %>
+    <%= submit_tag "Sell", class: "btn btn-danger" %>
+  <% end %>
+</td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
