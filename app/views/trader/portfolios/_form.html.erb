@@ -1,0 +1,25 @@
+<%= form_with model: portfolio do |form| %>
+  <div>
+    <%= form.label :Name %><br>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+  <%= @symbol %>
+  </div>
+
+  <%= @stock_price  %>
+  <div>
+    <%= form.label :shares %><br>
+    <%= form.text_field :total_shares %>
+  </div>
+
+  <div>
+    <%= form.number_field :user_id, id: :portfolio_user_id, value: current_user.id, type: :hidden %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Buy" %>
+  </div>
+
+<% end %>

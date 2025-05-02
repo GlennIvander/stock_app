@@ -1,0 +1,34 @@
+<% if current_user %>
+  <h2>Hiiii <%= current_user.email %></h2>
+<% end %>
+
+<%= link_to "My Portfolio", trader_my_portfolio_path %><br>
+<%= link_to "Transaction", trader_transaction_path %><br>
+
+<%= form_with url: trader_portfolios_path, method: :get, local: true do %>
+  <div>
+    <%= label_tag :symbol, "Search Stock Symbol:" %>
+    <%= text_field_tag :symbol, params[:symbol] %>
+    <%= submit_tag "Search" %>
+  </div>
+<% end %>
+
+<% if @symbol.present? && @stock_price.present? %>
+  <br>
+  <h3>Search Result</h3>
+  <p><strong>Symbol:</strong> <%= @symbol %></p>
+  <p><strong>Stock Price:</strong> <%= @stock_price %></p>
+
+  <%= form_with model: @stock, url: trader_portfolios_path, method: :post, local: true do |form| %>
+  <%= form.hidden_field :symbol, value: @symbol %>
+  <%= form.hidden_field :stock_price, value: @stock_price %>
+
+  <div>
+    <%= form.label :total_shares, "Quantity:" %>
+    <%= form.number_field :total_shares, min: 1, required: true %>
+  </div>
+
+  <%= form.submit "Buy", class: "btn btn-primary" %>
+<% end %>
+
+<% end %>

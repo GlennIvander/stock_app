@@ -23,6 +23,13 @@
   </head>
 
   <body>
+    <%= render "trader/portfolios/header" %>
+    <br><br>
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-info text-center font-weight-bolder">
+        <%= msg %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

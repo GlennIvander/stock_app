@@ -10,12 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_23_163552) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_30_150250) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "portfolios", force: :cascade do |t|
-    t.string "name"
     t.string "symbol"
     t.integer "stock_price"
     t.integer "total_shares"
@@ -27,7 +26,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_23_163552) do
 
   create_table "transactions", force: :cascade do |t|
     t.string "type"
-    t.string "name"
     t.string "symbol"
     t.integer "shares"
     t.integer "stock_price"
