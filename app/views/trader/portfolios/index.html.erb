@@ -2,8 +2,10 @@
   <h2>Hiiii <%= current_user.email %></h2>
 <% end %>
 
+<h3>Balance: <%= number_to_currency(current_user.balance, unit: "₱") %></h3>
+
 <%= link_to "My Portfolio", trader_my_portfolio_path %><br>
-<%= link_to "Transaction", trader_transaction_path %><br>
+<%= link_to "Transaction", trader_transactions_path %><br>
 
 <%= form_with url: trader_portfolios_path, method: :get, local: true do %>
   <div>
@@ -28,7 +30,7 @@
     <%= form.number_field :total_shares, min: 1, required: true %>
   </div>
 
-  <%= form.submit "Buy", class: "btn btn-primary" %>
-<% end %>
-
+  <%= form.submit "Buy", name: "commit", value: "Buy", class: "btn btn-primary" %>
+  <%= form.submit "Sell", name: "commit", value: "Sell", class: "btn btn-danger" %>
+  <% end %>
 <% end %>
