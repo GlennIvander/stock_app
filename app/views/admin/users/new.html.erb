@@ -1,0 +1,61 @@
+<h1>New Trader</h1>
+
+<%= form_with model: @user, url: admin_users_path, local: true do |form| %>
+  <% if @user.errors.any? %>
+    <div class="errors">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this trader from being saved:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :email %><br>
+    <%= form.email_field :email %>
+    <% if @user.errors[:email].any? %>
+      <div class="error-message">
+        <%= @user.errors[:email].join(", ") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :password %><br>
+    <%= form.password_field :password %>
+    <% if @user.errors[:password].any? %>
+      <div class="error-message">
+        <%= @user.errors[:password].join(", ") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :password_confirmation %><br>
+    <%= form.password_field :password_confirmation %>
+    <% if @user.errors[:password_confirmation].any? %>
+      <div class="error-message">
+        <%= @user.errors[:password_confirmation].join(", ") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :balance %><br>
+    <%= form.number_field :balance, step: 0.01 %>
+    <% if @user.errors[:balance].any? %>
+      <div class="error-message">
+        <%= @user.errors[:balance].join(", ") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit "Create Trader" %>
+  </div>
+
+  <%= link_to 'Back', admin_users_path, class: 'home-button' %>
+<% end %>
+

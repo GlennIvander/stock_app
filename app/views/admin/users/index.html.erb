@@ -1,0 +1,29 @@
+<h1>All Traders</h1>
+
+<p>
+  <%= link_to 'Add New Trader', new_admin_user_path, class: 'button' %>
+</p>
+
+<table>
+  <tr>
+    <th>Email</th>
+    <th>Status</th>
+    <th>Actions</th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td>
+        <span class="<%= user.is_pending ? 'pending-status' : 'approved-status' %>">
+          <%= user.is_pending ? 'Pending' : 'Approved' %>
+        </span>
+      </td>
+      <td>
+        <%= link_to 'Show', admin_user_path(user) %> |
+        <%= link_to 'Edit', edit_admin_user_path(user) %>
+      </td>
+    </tr>
+  <% end %>
+
+  <%= link_to 'Home', root_path, class: 'button' %>
+</table>

@@ -1,0 +1,10 @@
+/* Pending status (Red) */
+.pending-status {
+    color: red; 
+  }
+  
+  /* Approved status (Green) */
+  .approved-status {
+    color: green; 
+  }
+  

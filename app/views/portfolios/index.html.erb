@@ -1,6 +1,12 @@
 <% if user_signed_in? %>
-<h2> Hi <%= current_user.email %> </h2>
-<%= link_to "Get started", trader_portfolios_path %>
+<h2>Hi <%= current_user.email %></h2>
+
+<% if current_user.is_admin? %>
+  <%= link_to "Go to Admin Dashboard", admin_users_path %>
 <% else %>
-<h1>Welcome. Please sign in</h1> 
-<% end  %>
+  <%= link_to "Get started", trader_portfolios_path %>
+<% end %>
+
+<% else %>
+  <h1>Welcome. Please sign in</h1> 
+<% end %>

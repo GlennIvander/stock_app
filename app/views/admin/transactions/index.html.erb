@@ -1,0 +1,33 @@
+<h1>All Transactions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Trader</th>
+      <th>Portfolio</th>
+      <th>Transaction Type</th>
+      <th>Amount</th>
+      <th>Date</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+      </tr>
+    <% end %>
+
+    <% @transactions.each do |transaction| %>
+      <tr>
+        <td><%= transaction.portfolio.symbol %></td>
+        <td><%= transaction.transaction_type %></td>  
+        <td><%= number_to_currency(transaction.total) %></td> 
+        <td><%= transaction.created_at.strftime("%B %d, %Y") %></td>
+        <td><%= link_to 'View Details', admin_users_path(transaction), class: 'view-details' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back to Traders', admin_users_path, class: 'back-button' %>
