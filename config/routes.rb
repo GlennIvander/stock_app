@@ -21,13 +21,25 @@ Rails.application.routes.draw do
       end
     end
 
-    get "my_portfolio", to: "portfolios#my_portfolio", as: :my_portfolio
-
+    get "my_portfolio", to: "portfolios#my_portfolio", as: :my_portfoliora
     get "transactions", to: "portfolios#transaction", as: :transaction
   end
 
 
   resources :portfolios do
     resources :transactions
+  end
+
+  # Admin routes for managing traders
+  namespace :admin do
+    resources :users do
+      collection do
+        get 'pending'  # Admin view pending traders
+      end
+      member do
+        patch 'approve'  # Admin approves a trader
+      end
+    end
+    # resources :transactions, only: [:index]  # Admin can view all transactions
   end
 end

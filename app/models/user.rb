@@ -6,4 +6,13 @@ class User < ApplicationRecord
 
   has_many :portfolios
   has_many :transactions
+
+  # Roles
+  def admin?
+    is_admin
+  end
+
+  def trader?
+    !is_admin
+  end
 end
