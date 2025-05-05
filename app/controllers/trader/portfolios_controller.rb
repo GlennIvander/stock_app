@@ -1,6 +1,6 @@
 class Trader::PortfoliosController < ApplicationController
-  before_action :authenticate_user!, except: [ :index, :show ]
-  before_action :set_id, only: %i[show]
+  require "ostruct"
+  before_action :authenticate_user!
 
   def index
     @portfolios = current_user.portfolios
@@ -26,16 +26,87 @@ class Trader::PortfoliosController < ApplicationController
   end
 
   def my_portfolio
-    @portfolios = current_user.portfolios
+    grouped = current_user.portfolios.group_by(&:symbol)
+
+    @merged_portfolios = grouped.map do |symbol, records|
+      total_shares = records.sum(&:total_shares)
+      total_cost   = records.sum(&:total_cost)
+
+      OpenStruct.new(symbol: symbol, total_shares: total_shares, total_cost: total_cost, created_at: records.min_by(&:created_at).created_at)
+    end
   end
 
   def create
-    @stock = current_user.portfolios.new(portfolio_params)
+    action = params[:commit]
+    symbol = portfolio_params[:symbol]
+    shares = portfolio_params[:total_shares].to_i
+    price = portfolio_params[:stock_price].to_f
 
-    if @stock.save
-      redirect_to trader_portfolios_path, notice: "Stock successfully bought!"
+    existing_stock = current_user.portfolios.find_by(symbol: symbol)
+
+    if action == "Sell"
+      if existing_stock.nil? || existing_stock.total_shares < shares
+        redirect_to trader_portfolios_path, alert: "You don't have enough shares to sell." and return
+      end
+
+      existing_stock.total_shares -= shares
+      existing_stock.total_cost -= price * shares
+      existing_stock.save
+
+      Transaction.create(
+        transaction_type: "sell",
+        symbol: symbol,
+        shares: shares,
+        stock_price: price,
+        total: price * shares,
+        portfolio_id: existing_stock.id
+      )
+
+      current_user.balance += price * shares
+      current_user.save
+
+      if existing_stock.total_shares == 0
+        existing_stock.save
+      end
+
+      redirect_to trader_portfolios_path, notice: "Successfully sold #{shares} share(s) of #{symbol}."
     else
-      redirect_to trader_portfolios_path, alert: "Failed to buy stock."
+      total_cost = price * shares
+
+      if current_user.balance < total_cost
+        redirect_to trader_portfolios_path, alert: "Insufficient balance." and return
+      end
+
+      if existing_stock
+        existing_stock.total_shares += shares
+        existing_stock.total_cost += total_cost
+        existing_stock.save
+      else
+        existing_stock = current_user.portfolios.new(
+          symbol: symbol,
+          stock_price: price,
+          total_shares: shares,
+          total_cost: total_cost
+        )
+
+        unless existing_stock.save
+          redirect_to trader_portfolios_path, alert: "Failed to buy stock." and return
+        end
+      end
+
+      current_user.balance -= total_cost
+      current_user.save
+
+      Transaction.create(
+        transaction_type: "buy",
+        symbol: symbol,
+        shares: shares,
+        stock_price: price,
+        total: total_cost,
+        portfolio_id: existing_stock.id
+      )
+
+      redirect_to trader_portfolios_path, notice: "Stock successfully bought!"
     end
   end
 
@@ -50,19 +121,14 @@ class Trader::PortfoliosController < ApplicationController
     else
       @portfolio.total_shares -= shares_to_sell
       if @portfolio.total_shares == 0
-        @portfolio.destroy
-        redirect_to trader_my_portfolio_path, notice: "All shares sold. Stock removed from your portfolio."
+        @portfolio.save
+        redirect_to trader_my_portfolio_path, notice: "All shares sold. You no longer hold any shares of this stock."
       else
         @portfolio.save
         redirect_to trader_my_portfolio_path, notice: "Successfully sold #{shares_to_sell} share(s)."
       end
     end
   end
-
-  def transaction
-  end
-
-  def show; end
 
   private
 
