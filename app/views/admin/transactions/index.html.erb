@@ -12,14 +12,19 @@
     </tr>
   </thead>
   <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+      </tr>
+    <% end %>
+
     <% @transactions.each do |transaction| %>
       <tr>
-        <td><%= transaction.user.email %></td>
         <td><%= transaction.portfolio.symbol %></td>
-        <td><%= transaction.transaction_type %></td>  <!-- Assuming you have a 'transaction_type' field like 'buy' or 'sell' -->
-        <td><%= number_to_currency(transaction.amount) %></td> <!-- Assuming you have an 'amount' field for transaction amount -->
-        <td><%= transaction.created_at.strftime("%B %d, %Y") %></td> <!-- Date formatted as 'Month Day, Year' -->
-        <td><%= link_to 'View Details', admin_transaction_path(transaction), class: 'view-details' %></td>
+        <td><%= transaction.transaction_type %></td>  
+        <td><%= number_to_currency(transaction.total) %></td> 
+        <td><%= transaction.created_at.strftime("%B %d, %Y") %></td>
+        <td><%= link_to 'View Details', admin_users_path(transaction), class: 'view-details' %></td>
       </tr>
     <% end %>
   </tbody>

@@ -4,6 +4,7 @@ class Admin::TransactionsController < ApplicationController
 
   def index
     # Fetch all transactions
+    @users = User.all
     @transactions = Transaction.all
   end
 end

@@ -25,4 +25,20 @@ Rails.application.routes.draw do
 
   resources :transactions, only: [ :index ]
   end
+
+    # Admin routes for managing traders
+    namespace :admin do
+      resources :users do
+        collection do
+          get 'pending'  # Admin view pending traders
+        end
+        member do
+          patch 'approve'  # Admin approves a trader
+        end
+      end
+      # resources :transactions, only: [:index]  # Admin can view all transactions
+    end
+    namespace :admin do
+      resources :transactions, only: [:index]
+    end
 end
