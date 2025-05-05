@@ -8,6 +8,7 @@
       <th>Symbol</th>
       <th>Total Shares</th>
       <th>Total Cost</th>
+      <th>Bought</th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +18,8 @@
         <td><%= portfolio.symbol %></td>
         <td><%= portfolio.total_shares %></td>
         <td><%= number_to_currency(portfolio.total_cost, unit: "₱") %></td>
+        <td><%= portfolio.created_at.strftime("%b %d, %Y %I:%M %p") %></td>
+
       </tr>
     <% end %>
   </tbody>

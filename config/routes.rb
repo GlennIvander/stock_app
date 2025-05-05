@@ -21,13 +21,8 @@ Rails.application.routes.draw do
       end
     end
 
-    get "my_portfolio", to: "portfolios#my_portfolio", as: :my_portfolio
+  get "my_portfolio", to: "portfolios#my_portfolio", as: :my_portfolio
 
-    get "transactions", to: "portfolios#transaction", as: :transaction
-  end
-
-
-  resources :portfolios do
-    resources :transactions
+  resources :transactions, only: [ :index ]
   end
 end
