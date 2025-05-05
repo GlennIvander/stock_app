@@ -42,4 +42,8 @@ Rails.application.routes.draw do
     end
     # resources :transactions, only: [:index]  # Admin can view all transactions
   end
+
+  namespace :admin do
+    resources :transactions, only: [:index]
+  end
 end
