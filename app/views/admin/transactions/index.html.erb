@@ -1,6 +1,6 @@
 <h1>All Transactions</h1>
 
-<table>
+<table border="1" cellpadding="8">
   <thead>
     <tr>
       <th>Trader</th>
@@ -13,20 +13,19 @@
   </thead>
   <tbody>
     <% @users.each do |user| %>
+    <% user.portfolios.each do |portfolio| %>
+    <% portfolio.transactions.each do |transaction| %>
       <tr>
         <td><%= user.email %></td>
-      </tr>
-    <% end %>
-
-    <% @transactions.each do |transaction| %>
-      <tr>
-        <td><%= transaction.portfolio.symbol %></td>
-        <td><%= transaction.transaction_type %></td>  
-        <td><%= number_to_currency(transaction.total) %></td> 
+        <td><%= portfolio.symbol %></td>
+        <td><%= transaction.transaction_type %></td>
+        <td><%= number_to_currency(transaction.total) %></td>
         <td><%= transaction.created_at.strftime("%B %d, %Y") %></td>
         <td><%= link_to 'View Details', admin_users_path(transaction), class: 'view-details' %></td>
       </tr>
     <% end %>
+  <% end %>
+<% end %>
   </tbody>
 </table>
 

@@ -4,6 +4,7 @@
 <% if current_user.is_admin? %>
   <%= link_to "Go to Admin Dashboard", admin_users_path %>
 <% else %>
+  <h2> Welcome, traders! In this app, we’re here to help you get richer, one stock at a time! Let’s stock, stock, stock! 😄📈 </h2>
   <%= link_to "Get started", trader_portfolios_path %>
 <% end %>
 

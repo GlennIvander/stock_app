@@ -14,8 +14,8 @@
     <tr>
       <td><%= user.email %></td>
       <td>
-        <span class="<%= user.is_pending ? 'pending-status' : 'approved-status' %>">
-          <%= user.is_pending ? 'Pending' : 'Approved' %>
+        <span class="<%= user.is_pending ? 'approved-status' : 'pending-status' %>">
+          <%= user.is_pending ? 'Approved' : 'Pending' %>
         </span>
       </td>
       <td>
@@ -25,5 +25,6 @@
     </tr>
   <% end %>
 
-  <%= link_to 'Home', root_path, class: 'button' %>
+  <%= link_to 'Home', root_path, class: 'button' %> <br>
+  <%= link_to 'Transaction', admin_transactions_path, class: 'button' %>
 </table>
