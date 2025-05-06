@@ -1,5 +1,5 @@
 <h2>My Portfolio</h2>
-
+<%= link_to "Back", trader_portfolios_path %><br>
 <h3>Balance: <%= number_to_currency(current_user.balance, unit: "₱") %></h3>
 
 <table border="1" cellpadding="8">
@@ -19,7 +19,6 @@
         <td><%= portfolio.total_shares %></td>
         <td><%= number_to_currency(portfolio.total_cost, unit: "₱") %></td>
         <td><%= portfolio.created_at.strftime("%b %d, %Y %I:%M %p") %></td>
-
       </tr>
     <% end %>
   </tbody>
