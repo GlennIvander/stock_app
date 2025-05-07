@@ -51,7 +51,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_07_115851) do
     t.datetime "updated_at", null: false
     t.boolean "is_admin", default: false
     t.float "balance"
-    t.boolean "is_pending", default: false
+    t.boolean "is_pending", default: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
