@@ -50,7 +50,6 @@ class Admin::UsersController < ApplicationController
     if @user.update(is_pending: false)
       Portfolio.create(user_id: @user.id, symbol: "USD", stock_price: 0, total_shares: 0)
 
-      # Trigger the email
       UserMailer.welcome_email(@user).deliver_now
 
       redirect_to admin_users_path, notice: "Trader approved and email sent."
