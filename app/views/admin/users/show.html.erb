@@ -3,7 +3,7 @@
 <div class="user-details">
   <p><strong>Email:</strong> <%= @user.email %></p>
   <p><strong>Balance:</strong> $<%= number_to_currency(@user.balance) %></p>
-  <p><strong>Status:</strong> <%= @user.is_pending ? "Approved" : "Pending" %></p>
+  <p><strong>Status:</strong> <%= @user.is_pending ? "Pending" : "Approved" %></p>
   <p><strong>Admin:</strong> <%= @user.is_admin ? "Yes" : "No" %></p>
 
   <h3>Portfolio</h3>
