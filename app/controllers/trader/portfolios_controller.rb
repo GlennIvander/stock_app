@@ -7,6 +7,21 @@ class Trader::PortfoliosController < ApplicationController
     @stock = current_user.portfolios.new
     @users = User.all
 
+    @major_stocks = {
+      "Microsoft" => "MSFT",
+      "Google"    => "GOOG",
+      "Netflix"   => "NFLX",
+      "Amazon"    => "AMZN",
+      "Meta"      => "META"
+    }
+
+    @stock_totals = {}
+
+    @major_stocks.each do |name, symbol|
+      total = Transaction.where(symbol: symbol, transaction_type: "buy").sum(:shares)
+      @stock_totals[symbol] = total
+    end
+
     if params[:symbol].present?
       users = AvaApi.fetch_records(params[:symbol])
       if users.present? && users["Meta Data"].present? && users["Time Series (5min)"].present?
@@ -17,6 +32,7 @@ class Trader::PortfoliosController < ApplicationController
       end
     end
   end
+
 
   def new
     # file_path = Rails.root.join("lib", "assets", "data.json")
