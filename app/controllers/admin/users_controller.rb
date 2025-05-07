@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :approve]
+  before_action :set_user, only: [ :show, :edit, :update, :destroy, :approve ]
 
   def index
     @users = User.all
@@ -9,12 +9,12 @@ class Admin::UsersController < ApplicationController
   def new
     @user = User.new
   end
-  
+
   def create
     @user = User.new(user_params)
     @user.is_admin = false # Ensure the user is created as a trader
     @user.is_pending = false # Mark as approved immediately if desired
-  
+
     if @user.save
       # Optionally create a starting portfolio
       Portfolio.create(user_id: @user.id, symbol: "USD", stock_price: 0, total_shares: 0)
@@ -47,11 +47,18 @@ class Admin::UsersController < ApplicationController
 
   def approve
     @user = User.find(params[:id])
-    @user.update(is_pending: false)  # Mark the user as approved
-    # Create an initial portfolio for the user
-    Portfolio.create(user_id: @user.id, symbol: "USD", stock_price: 0, total_shares: 0)
-    redirect_to admin_users_path, notice: "Trader approved successfully."
+    if @user.update(is_pending: false)
+      Portfolio.create(user_id: @user.id, symbol: "USD", stock_price: 0, total_shares: 0)
+
+      # Trigger the email
+      UserMailer.welcome_email(@user).deliver_now
+
+      redirect_to admin_users_path, notice: "Trader approved and email sent."
+    else
+      redirect_to admin_users_path, alert: "Failed to approve trader."
+    end
   end
+
 
   def destroy
     @user = User.find(params[:id])
