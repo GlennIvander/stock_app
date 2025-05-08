@@ -16,8 +16,7 @@ class Admin::UsersController < ApplicationController
     @user.is_pending = false # Mark as approved immediately if desired
 
     if @user.save
-      # Optionally create a starting portfolio
-      Portfolio.create(user_id: @user.id, symbol: "USD", stock_price: 0, total_shares: 0)
+      # Portfolio.create(user_id: @user.id, symbol: "USD", stock_price: 0, total_shares: 0)
       redirect_to admin_user_path(@user), notice: "Trader created successfully."
     else
       render :new, status: :unprocessable_entity
@@ -48,7 +47,7 @@ class Admin::UsersController < ApplicationController
   def approve
     @user = User.find(params[:id])
     if @user.update(is_pending: false)
-      Portfolio.create(user_id: @user.id, symbol: "USD", stock_price: 0, total_shares: 0)
+      # Portfolio.create(user_id: @user.id, symbol: "USD", stock_price: 0, total_shares: 0)
 
       UserMailer.welcome_email(@user).deliver_now
 
