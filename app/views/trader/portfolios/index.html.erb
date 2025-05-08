@@ -34,34 +34,16 @@
   <% end %>
   <br>
   <h2> Major Stocks right now! </h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Symbol</th>
-      </tr>
-    </thead>
+  <table border="1" cellpadding="8">
     <tbody>
-      <tr>
-        <td>Microsoft</td>
-        <td>MSFT</td>
-      </tr>
-      <tr>
-        <td>Google</td>
-        <td>GOOG</td>
-      </tr>
-      <tr>
-        <td>Netflix</td>
-        <td>NFLX</td>
-      </tr>
-      <tr>
-        <td>Amazon</td>
-        <td>AMZN</td>
-      </tr>
-      <tr>
-        <td>Meta</td>
-        <td>META</td>
-      </tr>
+      <% @stock_totals.sort_by { |symbol, total| total }.reverse.each do |symbol, total| %>
+        <% stock_name = @major_stocks.key(symbol) %>
+        <tr>
+          <td><%= stock_name %></td>
+          <td><%= symbol %></td>
+          <td><%= total %></td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 <% else %>
