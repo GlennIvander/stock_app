@@ -1,0 +1,23 @@
+<h1>All Traders</h1>
+
+<table>
+  <tr>
+    <th>Email</th>
+    <th>Status</th>
+    <th>Balance</th>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td>
+        <span class="<%= user.is_pending ? 'pending-status' : 'approved-status' %>">
+            <%= user.is_pending ? "Pending" : "Approved" %>
+        </span>
+      </td>
+      <td><%= number_to_currency(user.balance) %></td>
+    </tr>
+  <% end %>
+
+  <%= link_to 'Back', admin_users_path, class: 'button' %>
+</table>

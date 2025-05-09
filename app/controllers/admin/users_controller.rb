@@ -6,6 +6,10 @@ class Admin::UsersController < ApplicationController
     @users = User.all
   end
 
+  def all_traders
+    @users = User.where.not(is_admin: true)
+  end
+
   def new
     @user = User.new
   end
