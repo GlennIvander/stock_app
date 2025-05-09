@@ -30,10 +30,11 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :users do
         collection do
-          get 'pending'  # Admin view pending traders
+          get "pending"  # Admin view pending traders
+          get "all_traders"   # Admin view all traders
         end
         member do
-          patch 'approve'  # Admin approves a trader
+          patch "approve"  # Admin approves a trader
         end
       end
       # resources :transactions, only: [:index]  # Admin can view all transactions
