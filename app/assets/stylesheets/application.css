@@ -8,3 +8,14 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+ .sidebar {
+    background-color: #0d1b2a; /* dark navy */
+    color: white;
+  }
+  
+  .main-content {
+    background-color: white;
+    color: #333;
+  }
+  
