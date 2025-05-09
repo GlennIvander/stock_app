@@ -15,4 +15,14 @@ class User < ApplicationRecord
   def trader?
     !is_admin
   end
+
+  validate :password_complexity
+
+  def password_complexity
+    return if password.blank?
+
+    unless password =~ /[^A-Za-z0-9]/
+      errors.add :password, 'must include at least one special character (e.g., !@#$%^&*)'
+    end
+  end
 end
