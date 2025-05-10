@@ -33,7 +33,6 @@ class Trader::PortfoliosController < ApplicationController
     end
   end
 
-
   def new
     # file_path = Rails.root.join("lib", "assets", "data.json")
     # users = JSON.parse(File.read(file_path))
@@ -93,12 +92,6 @@ class Trader::PortfoliosController < ApplicationController
     params.require(:portfolio).permit(:symbol, :stock_price, :total_shares)
   end
 
-  def set_id
-    @portfolio= current_user.portfolios.find(params[:id])
-  end
-
-  private
-
   def handle_sell(stock, shares, price)
     if stock.new_record? || stock.total_shares < shares
       redirect_to trader_portfolios_path, alert: "You don't have enough shares to sell." and return
@@ -137,7 +130,6 @@ class Trader::PortfoliosController < ApplicationController
 
     redirect_to trader_portfolios_path, notice: "Stock successfully bought!"
   end
-
 
   def create_transaction(type, stock, shares, price)
     Transaction.create!(

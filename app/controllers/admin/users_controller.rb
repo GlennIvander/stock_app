@@ -21,6 +21,9 @@ class Admin::UsersController < ApplicationController
 
     if @user.save
       # Portfolio.create(user_id: @user.id, symbol: "USD", stock_price: 0, total_shares: 0)
+
+      UserMailer.admin_created_email(@user).deliver
+
       redirect_to admin_user_path(@user), notice: "Trader created successfully."
     else
       render :new, status: :unprocessable_entity
@@ -60,7 +63,6 @@ class Admin::UsersController < ApplicationController
       redirect_to admin_users_path, alert: "Failed to approve trader."
     end
   end
-
 
   def destroy
     @user = User.find(params[:id])
