@@ -10,12 +10,81 @@
  */
 
  .sidebar {
-    background-color: #0d1b2a; /* dark navy */
+    background-color: #0B1E3F;
     color: white;
+    border-radius: 12px 0 0 12px;
+  }
+  
+  .sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin: 10px 0;
+    font-weight: 500;
+  }
+  
+  .sidebar a:hover {
+    color: #00bfff;
   }
   
   .main-content {
     background-color: white;
     color: #333;
+    border-radius: 12px 0 0 12px;
   }
   
+.welcome-image {
+  display: block;
+  margin: 0 auto;
+  max-width: 70%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.gif-caption {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #0d47a1;
+  font-style: italic;
+  text-align: center;
+}
+
+.welcome-banner {
+  background: linear-gradient(to right, #e3f2fd, #bbdefb);
+  border-left: 10px solid #07306d;
+  border-radius: 16px;
+  padding: 30px 20px;
+  margin: 30px auto;
+  width: 80%;
+  max-width: 800px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeInDown 1s ease-in-out;
+}
+
+.welcome-banner h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #062047;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+}
+
+.welcome-banner .emoji {
+  font-size: 1.8rem;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -9,5 +9,13 @@
 <% end %>
 
 <% else %>
-  <h1>Welcome. Please sign in</h1> 
+<div class="welcome-banner text-center shadow">
+  <h1>
+    <span class="emoji">🔐</span>
+    <span class="text">Welcome! Please Sign In</span>
+  </h1> <br>
+  <%= image_tag "gif.gif", alt: "Animated Welcome", class: "welcome-image" %>
+  <p class="gif-caption">Explore the stock world one frame at a time! 📊</p>
+</div>
+
 <% end %>
