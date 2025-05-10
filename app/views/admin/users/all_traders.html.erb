@@ -15,7 +15,7 @@
             <%= user.is_pending ? "Pending" : "Approved" %>
         </span>
       </td>
-      <td><%= number_to_currency(user.balance) %></td>
+      <td><%= number_to_currency(user.balance, unit: "₱") %></td>
     </tr>
   <% end %>
 

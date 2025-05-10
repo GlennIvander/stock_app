@@ -2,14 +2,14 @@
 
 <div class="user-details">
   <p><strong>Email:</strong> <%= @user.email %></p>
-  <p><strong>Balance:</strong> $<%= number_to_currency(@user.balance) %></p>
+  <p><strong>Balance:</strong> <%= number_to_currency(@user.balance, unit: "₱") %></p>
   <p><strong>Status:</strong> <%= @user.is_pending ? "Pending" : "Approved" %></p>
   <p><strong>Admin:</strong> <%= @user.is_admin ? "Yes" : "No" %></p>
 
   <h3>Portfolio</h3>
   <ul>
     <% @user.portfolios.each do |portfolio| %>
-      <li><%= portfolio.symbol %>: <%= number_to_currency(portfolio.stock_price) %> (Shares: <%= portfolio.total_shares %>)</li>
+      <li><%= portfolio.symbol %>: <%= number_to_currency(portfolio.stock_price, unit: "₱") %> (Shares: <%= portfolio.total_shares %>)</li>
     <% end %>
   </ul>
 </div>

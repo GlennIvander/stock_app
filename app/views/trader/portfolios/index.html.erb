@@ -35,6 +35,13 @@
   <br>
   <h2> Major Stocks right now! </h2>
   <table border="1" cellpadding="8">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Symbol</th>
+        <th>Total Bought</th>
+      </tr>
+    </thead>
     <tbody>
       <% @stock_totals.sort_by { |symbol, total| total }.reverse.each do |symbol, total| %>
         <% stock_name = @major_stocks.key(symbol) %>
