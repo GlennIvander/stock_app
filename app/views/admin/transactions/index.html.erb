@@ -19,8 +19,8 @@
         <td><%= user.email %></td>
         <td><%= portfolio.symbol %></td>
         <td><%= transaction.transaction_type %></td>
-        <td><%= number_to_currency(transaction.total) %></td>
-        <td><%= transaction.created_at.strftime("%B %d, %Y") %></td>
+        <td><%= number_to_currency(transaction.total, unit: "₱") %></td>
+        <td><%= transaction.created_at.strftime("%b %d, %Y %I:%M %p") %></td>
         <td><%= link_to 'View Details', admin_user_path(user), class: 'view-details' %></td>
       </tr>
     <% end %>
