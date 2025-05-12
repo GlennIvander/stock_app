@@ -9,30 +9,30 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
- .sidebar {
-    background-color: #0B1E3F;
-    color: white;
-    border-radius: 12px 0 0 12px;
-  }
-  
-  .sidebar a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    margin: 10px 0;
-    font-weight: 500;
-  }
-  
-  .sidebar a:hover {
-    color: #00bfff;
-  }
-  
-  .main-content {
-    background-color: white;
-    color: #333;
-    border-radius: 12px 0 0 12px;
-  }
-  
+.sidebar {
+  background-color: #0b1e3f;
+  color: white;
+  border-radius: 12px 0 0 12px;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  margin: 10px 0;
+  font-weight: 500;
+}
+
+.sidebar a:hover {
+  color: #00bfff;
+}
+
+.main-content {
+  background-color: white;
+  color: #333;
+  border-radius: 12px 0 0 12px;
+}
+
 .welcome-image {
   display: block;
   margin: 0 auto;

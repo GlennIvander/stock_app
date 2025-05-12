@@ -1,3 +1,4 @@
+<div class="form-container">
 <h1>New Trader</h1>
 
 <%= form_with model: @user, url: admin_users_path, local: true do |form| %>
@@ -14,7 +15,7 @@
 
   <div>
     <%= form.label :email %><br>
-    <%= form.email_field :email %>
+    <%= form.email_field :email, class:"select" %>
     <% if @user.errors[:email].any? %>
       <div class="error-message">
         <%= @user.errors[:email].join(", ") %>
@@ -24,7 +25,7 @@
 
   <div>
     <%= form.label :password %><br>
-    <%= form.password_field :password %>
+    <%= form.password_field :password, class:"select" %>
     <% if @user.errors[:password].any? %>
       <div class="error-message">
         <%= @user.errors[:password].join(", ") %>
@@ -34,7 +35,7 @@
 
   <div>
     <%= form.label :password_confirmation %><br>
-    <%= form.password_field :password_confirmation %>
+    <%= form.password_field :password_confirmation, class:"select" %>
     <% if @user.errors[:password_confirmation].any? %>
       <div class="error-message">
         <%= @user.errors[:password_confirmation].join(", ") %>
@@ -44,7 +45,7 @@
 
   <div>
     <%= form.label :balance %><br>
-    <%= form.number_field :balance, step: 0.01 %>
+    <%= form.number_field :balance, step: 0.01, class:"select" %>
     <% if @user.errors[:balance].any? %>
       <div class="error-message">
         <%= @user.errors[:balance].join(", ") %>
@@ -53,9 +54,9 @@
   </div>
 
   <div>
-    <%= form.submit "Create Trader" %>
+    <%= form.submit "Create Trader", class:"submit" %>
   </div>
 
   <%= link_to 'Back', admin_users_path, class: 'home-button' %>
 <% end %>
-
+</div>

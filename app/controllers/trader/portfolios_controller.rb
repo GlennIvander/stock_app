@@ -110,7 +110,7 @@ class Trader::PortfoliosController < ApplicationController
   end
 
   def handle_buy(stock, shares, price, total_cost)
-    if current_user.balance < total_cost
+    if current_user.balance.to_f < total_cost.to_f
       redirect_to trader_portfolios_path, alert: "Insufficient balance." and return
     end
 
