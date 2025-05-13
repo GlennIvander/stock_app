@@ -1,5 +1,5 @@
-<h2>My Portfolio</h2>
-<%= link_to "Back", trader_portfolios_path %><br>
+<h1>My Portfolio</h1>
+<%= link_to "Back", trader_portfolios_path, class: 'button' %><br>
 <h3>Balance: <%= number_to_currency(current_user.balance, unit: "₱") %></h3>
 
 <table border="1" cellpadding="8">
