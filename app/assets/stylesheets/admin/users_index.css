@@ -1,75 +1,77 @@
 /* Pending status (Red) */
 .pending-status {
-    color: red; 
-  }
-  
-  /* Approved status (Green) */
-  .approved-status {
-    color: green; 
-  }
-  
-  .main-container {
-    padding: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-  
-  .header-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .nav-buttons {
-    margin: 15px 0;
-  }
-  
-  .button {
-    background-color: #4b6b8a;
-    color: white;
-    padding: 8px 14px;
-    margin: 5px 5px 5px 0;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    display: inline-block;
-  }
-  
-  .button:hover {
-    background-color:#0B1E3F; 
-  }
-  
-  /* .user-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
-  
-  .user-table th, .user-table td {
-    padding: 12px 16px;
-    border-bottom: 1px solid #ddd;
-    text-align: left;
-  }
-  
-  .user-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-  } */
-  
+  color: red;
+}
 
-  .action-links {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-  
-  .sidebar-link {
-    color: #a8b2d1;
-    text-decoration: none;
-    font-weight: 500;
-  }
-  
-  .sidebar-link:hover {
-    color: #5f5757;
-    text-decoration: underline;
-  }
-  
+/* Approved status (Green) */
+.approved-status {
+  color: green;
+}
+
+.main-container {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-top-buttons {
+  margin: 15px 0;
+}
+
+.nav-bottom-buttons {
+  margin-top: 500px;
+}
+
+.button {
+  background-color: #4b6b8a;
+  color: white;
+  padding: 8px 14px;
+  margin: 5px 5px 5px 0;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.button:hover {
+  background-color: #0b1e3f;
+}
+
+/* .user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.user-table th, .user-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.user-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+} */
+
+.action-links {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.sidebar-link {
+  color: #a8b2d1;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.sidebar-link:hover {
+  color: #5f5757;
+  text-decoration: underline;
+}

@@ -1,29 +1,50 @@
 /* Headings */
 .main-content h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
-  }
-  
- 
-  /* Table styling */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background-color: #f9f9f9;
-  }
-  
-  table th,
-  table td {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    text-align: left;
-  }
-  
-  table th {
-    background-color: #e2e8f0;
-    color: #333;
-  }
-  
- 
-  
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #f9f9f9;
+}
+
+table th,
+table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table th {
+  background-color: #e2e8f0;
+  color: #333;
+}
+
+.trader-button {
+  display: inline-block;
+  padding: 10px 24px;
+  font-size: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4b6b8a;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px #999;
+}
+
+.trader-button:hover {
+  background-color: #0b1e3f;
+}
+
+.trader-button:active {
+  background-color: #0b1e3f;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
