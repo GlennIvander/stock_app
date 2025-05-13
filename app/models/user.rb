@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   has_many :portfolios
-  has_many :transactions
+  has_many :transactions, through: :portfolios
 
   # Roles
   def admin?

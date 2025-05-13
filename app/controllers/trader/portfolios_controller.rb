@@ -66,26 +66,6 @@ class Trader::PortfoliosController < ApplicationController
     end
   end
 
-  def sell
-    @portfolio = current_user.portfolios.find(params[:id])
-    shares_to_sell = params[:shares_to_sell].to_i
-
-    if shares_to_sell <= 0
-      redirect_to trader_my_portfolio_path, alert: "Invalid number of shares."
-    elsif shares_to_sell > @portfolio.total_shares
-      redirect_to trader_my_portfolio_path, alert: "You don't have that many shares to sell."
-    else
-      @portfolio.total_shares -= shares_to_sell
-      if @portfolio.total_shares == 0
-        @portfolio.save
-        redirect_to trader_my_portfolio_path, notice: "All shares sold. You no longer hold any shares of this stock."
-      else
-        @portfolio.save
-        redirect_to trader_my_portfolio_path, notice: "Successfully sold #{shares_to_sell} share(s)."
-      end
-    end
-  end
-
   private
 
   def portfolio_params
