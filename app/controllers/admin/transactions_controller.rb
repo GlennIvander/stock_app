@@ -1,4 +1,3 @@
-# app/controllers/admin/transactions_controller.rb
 class Admin::TransactionsController < ApplicationController
   before_action :authenticate_user!
 

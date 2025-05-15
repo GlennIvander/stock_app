@@ -20,7 +20,7 @@ class Admin::UsersController < ApplicationController
     @user.is_pending = false # Mark as approved immediately if desired
 
     if @user.save
-      # Portfolio.create(user_id: @user.id, symbol: "USD", stock_price: 0, total_shares: 0)
+      # Portfolio.create(user_id: @user.id, symbol: "PHP", stock_price: 0, total_shares: 0)
 
       UserMailer.admin_created_email(@user).deliver
 
@@ -54,7 +54,7 @@ class Admin::UsersController < ApplicationController
   def approve
     @user = User.find(params[:id])
     if @user.update(is_pending: false)
-      # Portfolio.create(user_id: @user.id, symbol: "USD", stock_price: 0, total_shares: 0)
+      # Portfolio.create(user_id: @user.id, symbol: "PHP", stock_price: 0, total_shares: 0)
 
       UserMailer.welcome_email(@user).deliver_now
 

@@ -5,6 +5,8 @@
     <th>Email</th>
     <th>Status</th>
     <th>Balance</th>
+    <th>Details</th>
+
   </tr>
 
   <% @users.each do |user| %>
@@ -16,6 +18,7 @@
         </span>
       </td>
       <td><%= number_to_currency(user.balance, unit: "₱") %></td>
+      <td><%= link_to 'View', admin_user_path(user), class: 'sidebar-link' %></td>
     </tr>
   <% end %>
 
