@@ -67,7 +67,7 @@ end
 gem "devise", "~> 4.9", ">= 4.9.4"
 
 group :development, :test do
-  gem "rspec-rails", "~> 8.0.0"
+  gem "rspec-rails", "~> 8.0.1"
   gem "factory_bot_rails"
   gem "shoulda-matchers", '~> 5.3'
 end
